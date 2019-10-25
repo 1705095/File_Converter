@@ -118,8 +118,8 @@ public  class ImageResize{
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
         fileChooser = new FileChooser();
-        fileChooser.setTitle("Select sample.Image");
-        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("sample.Image Files", "*.png", "*.jpeg", "*.gif"));
+        fileChooser.setTitle("Select Image");
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpeg", "*.gif"));
 
         String userDirectoryString = System.getProperty("user.home");
         File userDirectory = new File(userDirectoryString);
