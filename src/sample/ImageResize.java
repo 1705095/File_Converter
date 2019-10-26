@@ -116,7 +116,45 @@ public  class ImageResize{
     @FXML
     void SelectImage(ActionEvent event) {
 
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
+        fileChooser = new FileChooser();
+        fileChooser.setTitle("Select Image");
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpeg", "*.gif"));
+
+        String userDirectoryString = System.getProperty("user.home");
+        File userDirectory = new File(userDirectoryString);
+
+        if (!userDirectory.canRead())
+            userDirectory = new File("c:/");
+
+        fileChooser.setInitialDirectory(userDirectory);
+
+        this.filePath = fileChooser.showOpenDialog(stage);
+
+        try{
+            BufferedImage bufferedImage = ImageIO.read(filePath);
+            WritableImage image = SwingFXUtils.toFXImage(bufferedImage, null);
+            this.previewImage.setImage(image);
+            fileName.setText(String.valueOf(filePath));
+            //locationText.setText(filePath.getParent());
+            image_name = filePath.getAbsolutePath();
+            image_original_name = filePath.getName();
+            //String dir = filePath.getParent();
+            //System.out.println(image_original_name);
+            //System.out.println(dir);
+            int index = image_original_name.indexOf(".");
+            // System.out.println(index);
+            outputFilePath = filePath.getParent()+image_original_name.substring(0, index)+"Formatted";
+            //System.out.println(outputFilePath);
+            locationText.setText(outputFilePath);
+
+        }
+        catch (IOException e)
+        {
+            //System.out.println("Error Occurred");
+            fileName.setText("No file Selected");
+        }
 
 
     }
