@@ -183,5 +183,9 @@ public  class ImageResize{
 
     }
 
+    void PrintName(String name){
+        System.out.println(name);
+    }
+
 
 }
