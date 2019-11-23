@@ -18,7 +18,7 @@
             </image>
         </ImageView>
         <Button fx:id="backhome" layoutX="60.0" layoutY="60.0" mnemonicParsing="false" onAction="#BackHome" prefHeight="31.0" prefWidth="175.0" stylesheets="@Style.css" text="Back" />
-        <Label fx:id="convertName" layoutX="455.0" layoutY="57.0" prefHeight="21.0" prefWidth="371.0" text="PDF to sample.Image Converter" textFill="WHITE">
+        <Label fx:id="convertName" layoutX="455.0" layoutY="57.0" prefHeight="21.0" prefWidth="371.0" text="PDF to Image Converter" textFill="WHITE">
             <font>
                 <Font size="34.0" />
             </font>
@@ -53,7 +53,7 @@
                 <Font size="18.0" />
             </font>
         </Label>
-      <MenuButton fx:id="menuButton" layoutX="1006.0" layoutY="364.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="182.0" text="Select Format">
+      <MenuButton fx:id="menuButton" layoutX="1007.0" layoutY="357.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="182.0" stylesheets="@Style.css" text="Select Format">
         <items>
           <MenuItem fx:id="jpg" mnemonicParsing="false" onAction="#getJpeg" text="JPEG" />
           <MenuItem fx:id="png" mnemonicParsing="false" onAction="#getPng" text="PNG" />

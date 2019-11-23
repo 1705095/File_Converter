@@ -16,7 +16,7 @@
             </image>
         </ImageView>
         <Button fx:id="backhome" layoutX="60.0" layoutY="60.0" mnemonicParsing="false" onAction="#BackHome" prefHeight="31.0" prefWidth="175.0" stylesheets="@Style.css" text="Back" />
-        <Label fx:id="convertName" layoutX="455.0" layoutY="57.0" prefHeight="21.0" prefWidth="371.0" text="sample.Image to PDF  Converter" textFill="WHITE">
+        <Label fx:id="convertName" layoutX="455.0" layoutY="57.0" prefHeight="21.0" prefWidth="371.0" text="Image to PDF Converter" textFill="WHITE">
             <font>
                 <Font size="34.0" />
             </font>

@@ -35,7 +35,10 @@
             <Font size="19.0" />
          </font>
       </TextField>
-      <TextField fx:id="locationText" editable="false" layoutX="353.0" layoutY="360.0" prefHeight="42.0" prefWidth="576.0" />
+      <TextField fx:id="locationText" editable="false" layoutX="353.0" layoutY="360.0" prefHeight="42.0" prefWidth="576.0">
+         <font>
+            <Font size="19.0" />
+         </font></TextField>
       <Label layoutX="145.0" layoutY="367.0" text="File will be saved at" textFill="WHITE">
          <font>
             <Font size="19.0" />

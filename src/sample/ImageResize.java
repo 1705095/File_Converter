@@ -103,6 +103,11 @@ public  class ImageResize{
                 outputFilePath = outputFilePath+".png";
             }
             ImageIO.write(outPut,format, new File(outputFilePath));
+            fileName.clear();
+            heightText.clear();
+            widthText.clear();
+            locationText.clear();
+            previewImage.setImage(null);
 
         }
         else{
@@ -120,7 +125,7 @@ public  class ImageResize{
 
         fileChooser = new FileChooser();
         fileChooser.setTitle("Select Image");
-        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpeg", "*.gif"));
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpeg", "*.gif",".JPG"));
 
         String userDirectoryString = System.getProperty("user.home");
         File userDirectory = new File(userDirectoryString);
@@ -145,7 +150,7 @@ public  class ImageResize{
             //System.out.println(dir);
             int index = image_original_name.indexOf(".");
             // System.out.println(index);
-            outputFilePath = filePath.getParent()+image_original_name.substring(0, index)+"Formatted";
+            outputFilePath = filePath.getParent()+"\\"+image_original_name.substring(0, index)+"Formatted";
             //System.out.println(outputFilePath);
             locationText.setText(outputFilePath);
 

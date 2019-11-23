@@ -81,6 +81,10 @@ public class PdftoImage {
             ImageIOUtil.writeImage(bufferedImage,fileDestinationPath,300);
         }
         document.close();
+        fileName.clear();
+        locationText.clear();
+        showMessage.setText("Converted");
+
 
     }
 
@@ -89,7 +93,7 @@ public class PdftoImage {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
         fileChooser = new FileChooser();
-        fileChooser.setTitle("Select TXT Files");
+        fileChooser.setTitle("Select PDF Files");
         fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("PDF Files", "*.pdf"));
 
         String userDirectoryString = System.getProperty("user.home");

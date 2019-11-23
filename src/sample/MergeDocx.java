@@ -80,6 +80,7 @@ public class MergeDocx {
 
         fileOne.clear();
         fileTwo.clear();
+        locationText.clear();
 
     }
 
