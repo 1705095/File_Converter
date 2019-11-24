@@ -27,8 +27,8 @@
       <Button fx:id="textpdf" layoutX="42.0" layoutY="492.0" mnemonicParsing="false" onAction="#TExtToPdf" prefHeight="31.0" prefWidth="266.0" stylesheets="@Style.css" text="TEXT to PDF " />
       <Button fx:id="imgtopdfFile" layoutX="401.0" layoutY="175.0" mnemonicParsing="false" onAction="#ImageToPDF" prefHeight="31.0" prefWidth="266.0" stylesheets="@Style.css" text="Image to PDF" />
       <Button fx:id="pdfToImagebutton" layoutX="401.0" layoutY="254.0" mnemonicParsing="false" onAction="#PDFtoImage" prefHeight="31.0" prefWidth="266.0" stylesheets="@Style.css" text="PDF to Image" />
-      <Button fx:id="pdfToHTMLButton" layoutX="401.0" layoutY="329.0" mnemonicParsing="false" onAction="#PDFtoHTML" prefHeight="31.0" prefWidth="266.0" stylesheets="@Style.css" text="PDF to HTML" />
-      <Button fx:id="HtmlToPDFButton" layoutX="401.0" layoutY="410.0" mnemonicParsing="false" onAction="#HTMLtoPDF" prefHeight="31.0" prefWidth="266.0" stylesheets="@Style.css" text="HTML to PDF" />
+      <Button fx:id="pdfToHTMLButton" disable="true" layoutX="401.0" layoutY="329.0" mnemonicParsing="false" onAction="#PDFtoHTML" prefHeight="31.0" prefWidth="266.0" stylesheets="@Style.css" text="PDF to HTML" visible="false" />
+      <Button fx:id="HtmlToPDFButton" disable="true" layoutX="401.0" layoutY="410.0" mnemonicParsing="false" onAction="#HTMLtoPDF" prefHeight="31.0" prefWidth="266.0" stylesheets="@Style.css" text="HTML to PDF" visible="false" />
       <Label layoutX="1042.0" layoutY="652.0" prefHeight="31.0" prefWidth="208.0" text=" By: Arif Shariar Rahman" />
    </children>
 </AnchorPane>
