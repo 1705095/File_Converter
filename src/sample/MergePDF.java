@@ -219,26 +219,8 @@ public class MergePDF {
                 this.inputStreamsList.add(stream);
                 this.listPDDocuments.add( PDDocument.load(filePath));
             }
-//            File file2 = new File(filePath2.getAbsolutePath());
-//            PDDocument doc2 = PDDocument.load(file2);
-//            PDFmerger.addSource(file2);
-//            doc2.close();
-
 
             PDFMergerUtility PDFmerger = new PDFMergerUtility();
-
-            String FileOne = listFiles.get(0).getName();
-            String FileTwo = listFiles.get(1).getName();
-            int indexOne = FileOne.indexOf(".");
-            int indexTwo = FileTwo.indexOf(".");
-
-
-            fileDestinationPath = listFiles.get(0).getParent() + "\\" + FileOne.substring(0, indexOne) + FileTwo.substring(0, indexTwo) + ".pdf";
-            // System.out.println(fileDestinationPath);
-            multiLocationText.setText(fileDestinationPath);
-
-
-
             PDFmerger.setDestinationFileName(fileDestinationPath);
             PDFmerger.addSources(inputStreamsList);
 
@@ -247,9 +229,8 @@ public class MergePDF {
 
             for(PDDocument doc: listPDDocuments)
             {  doc.close();}
-//            fileOne.clear();
-//            fileTwo.clear();
-            locationText.clear();
+            files.clear();
+            multiLocationText.clear();
 
 
         }
@@ -281,9 +262,15 @@ public class MergePDF {
         files.setText((listFiles.size()-1)+" more files"+" + "+listFiles.get(0).getAbsolutePath() );
         System.out.println(listFiles.isEmpty());
 
+        String FileOne = listFiles.get(0).getName();
+        String FileTwo = listFiles.get(1).getName();
+        int indexOne = FileOne.indexOf(".");
+        int indexTwo = FileTwo.indexOf(".");
 
 
-
+        fileDestinationPath = listFiles.get(0).getParent() + "\\" + FileOne.substring(0, indexOne) + FileTwo.substring(0, indexTwo) + ".pdf";
+        // System.out.println(fileDestinationPath);
+        multiLocationText.setText(fileDestinationPath);
 
     }
 

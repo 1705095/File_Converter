@@ -1,0 +1,49 @@
+.button
+
+{
+-fx-background-color:radial-gradient(center 50%-40%,radius 200%,#00FFFF 45%,#00BFFF 50%);
+-fx-text-fill: black;
+-fx-font-size: 20px;
+
+}
+.button:hover
+{
+-fx-background-color:linear-gradient(greenyellow,limegreen);
+-fx-text-fill: black;
+-fx-font-size:20px;
+
+}
+.button:hover
+{
+-fx-text-fill:whitesmoke;
+
+}
+.text-field
+{
+-fx-background-color:#E1E1E1;
+}
+.menu-button
+{
+-fx-background-color:radial-gradient(center 50%-40%,radius 200%,#00FFFF 45%,#00BFFF 50%);
+-fx-text-fill: black;
+-fx-font-size: 20px;
+}
+
+.menu-button:hover
+{
+-fx-text-fill:whitesmoke;
+
+}
+
+.menu-item
+{
+-fx-background-color:radial-gradient(center 50%-40%,radius 200%,#00FFFF 45%,#00BFFF 50%);
+-fx-text-fill: black;
+-fx-font-size: 20px;
+}
+
+.menu-item:hover
+{
+-fx-text-fill:whitesmoke;
+
+}
