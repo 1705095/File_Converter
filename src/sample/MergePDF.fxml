@@ -12,32 +12,32 @@
             <Image url="@../../Image/assdasd.jpg" />
          </image>
       </ImageView>
-      <TextField fx:id="files" editable="false" layoutX="282.0" layoutY="474.0" prefHeight="31.0" prefWidth="591.0" promptText="Files">
+      <TextField fx:id="files" editable="false" layoutX="279.0" layoutY="145.0" prefHeight="31.0" prefWidth="591.0" promptText="Files">
          <font>
             <Font size="19.0" />
          </font>
       </TextField>
-      <TextField fx:id="fileOne" editable="false" layoutX="279.0" layoutY="146.0" prefHeight="31.0" prefWidth="591.0" promptText="File 1">
+      <TextField fx:id="fileOne" editable="false" layoutX="279.0" layoutY="220.0" prefHeight="31.0" prefWidth="591.0" promptText="File 1">
          <font>
             <Font size="19.0" />
          </font>
       </TextField>
-      <TextField fx:id="fileTwo" editable="false" layoutX="279.0" layoutY="230.0" prefHeight="31.0" prefWidth="591.0" promptText="File 2">
+      <TextField fx:id="fileTwo" editable="false" layoutX="279.0" layoutY="318.0" prefHeight="31.0" prefWidth="591.0" promptText="File 2">
          <font>
             <Font size="19.0" />
          </font>
       </TextField>
-      <Button fx:id="buttonOne" layoutX="929.0" layoutY="145.0" mnemonicParsing="false" onAction="#SelectFileOne" prefHeight="31.0" prefWidth="156.0" stylesheets="@Style.css" text="Select File 1">
+      <Button fx:id="buttonOne" layoutX="929.0" layoutY="220.0" mnemonicParsing="false" onAction="#SelectFileOne" prefHeight="31.0" prefWidth="156.0" stylesheets="@Style.css" text="Select File 1">
          <font>
             <Font size="19.0" />
          </font>
       </Button>
-      <Button fx:id="buttonTwo" layoutX="922.0" layoutY="229.0" mnemonicParsing="false" onAction="#SelectFileTwo" prefHeight="31.0" prefWidth="156.0" stylesheets="@Style.css" text="Select File 2">
+      <Button fx:id="buttonTwo" layoutX="929.0" layoutY="318.0" mnemonicParsing="false" onAction="#SelectFileTwo" prefHeight="31.0" prefWidth="156.0" stylesheets="@Style.css" text="Select File 2">
          <font>
             <Font size="19.0" />
          </font>
       </Button>
-      <Button fx:id="buttonZero" layoutX="929.0" layoutY="473.0" mnemonicParsing="false" onAction="#SelectMultiple" prefHeight="31.0" prefWidth="156.0" stylesheets="@Style.css" text="Select Files">
+      <Button fx:id="buttonZero" layoutX="929.0" layoutY="146.0" mnemonicParsing="false" onAction="#SelectMultiple" prefHeight="31.0" prefWidth="156.0" stylesheets="@Style.css" text="Select Files">
          <font>
             <Font size="19.0" />
          </font>
@@ -47,12 +47,12 @@
             <Font size="34.0" />
          </font>
       </Label>
-      <Label fx:id="showMessage" layoutX="317.0" layoutY="420.0" prefHeight="21.0" prefWidth="380.0" textFill="WHITE">
+      <Label fx:id="showMessage" layoutX="385.0" layoutY="392.0" prefHeight="21.0" prefWidth="380.0" textFill="WHITE">
          <font>
             <Font size="21.0" />
          </font>
       </Label>
-      <TextField fx:id="locationText" editable="false" layoutX="282.0" layoutY="338.0" prefHeight="42.0" prefWidth="591.0" promptText="Output File Location">
+      <TextField fx:id="locationText" editable="false" layoutX="280.0" layoutY="452.0" prefHeight="42.0" prefWidth="591.0" promptText="Output File Location">
          <font>
             <Font size="19.0" />
          </font>
@@ -62,7 +62,7 @@
             <Font size="19.0" />
          </font>
       </TextField>
-      <Label fx:id="loc" layoutX="154.0" layoutY="359.0" prefHeight="28.0" prefWidth="114.0" text="File location" textFill="WHITE">
+      <Label fx:id="loc" layoutX="154.0" layoutY="459.0" prefHeight="28.0" prefWidth="114.0" text="File location" textFill="WHITE">
          <font>
             <Font size="19.0" />
          </font>
@@ -72,7 +72,7 @@
             <Font size="19.0" />
          </font>
       </Label>
-      <Button fx:id="mergeButton" layoutX="929.0" layoutY="337.0" mnemonicParsing="false" onAction="#MergeButton" prefHeight="31.0" prefWidth="156.0" stylesheets="@Style.css" text="Merge">
+      <Button fx:id="mergeButton" layoutX="929.0" layoutY="451.0" mnemonicParsing="false" onAction="#MergeButton" prefHeight="31.0" prefWidth="156.0" stylesheets="@Style.css" text="Merge">
          <font>
             <Font size="19.0" />
          </font>
