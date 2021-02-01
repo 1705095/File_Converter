@@ -17,17 +17,23 @@ import org.apache.pdfbox.pdmodel.PDDocument;
 
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Iterator;
+import java.util.List;
 
 public class MergePDF {
-
+    @FXML
+    private TextField files;
     @FXML
     private TextField fileOne;
 
     @FXML
     private TextField fileTwo;
+
+    @FXML
+    private Button buttonZero;
 
     @FXML
     private Button buttonOne;
@@ -48,15 +54,23 @@ public class MergePDF {
     private Label loc;
 
     @FXML
+    private Label multiLoc;
+    @FXML
     private Button mergeButton;
+
+    @FXML
+    private Button multiMergeButton;
 
     @FXML
     private Button backButton;
 
     private FileChooser fileChooser;
     private File filePath1, filePath2;
+    private List<File> listFiles;
+    private List<InputStream> inputStreamsList;
+    private List<PDDocument> listPDDocuments;
     String fileDestinationPath;
-    boolean select1 = false, select2 = false;
+    boolean select1 = false, select2 = false,select0=false;
 
     @FXML
     void Back(ActionEvent event) throws IOException {
@@ -99,6 +113,8 @@ public class MergePDF {
 
 
     }
+
+
 
     @FXML
     void SelectFileOne(ActionEvent event) {

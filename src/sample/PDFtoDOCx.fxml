@@ -12,7 +12,7 @@
    <children>
       <ImageView fitHeight="720.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="assdasd.jpg" />
+            <Image url="@../../Image/assdasd.jpg" />
          </image>
       </ImageView>
       <Button fx:id="backhome" layoutX="60.0" layoutY="60.0" mnemonicParsing="false" onAction="#BackHome" prefHeight="31.0" prefWidth="175.0" stylesheets="@Style.css" text="Back" />
