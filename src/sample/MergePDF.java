@@ -20,6 +20,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -51,6 +52,9 @@ public class MergePDF {
     private TextField locationText;
 
     @FXML
+    private TextField multiLocationText;
+
+    @FXML
     private Label loc;
 
     @FXML
@@ -66,9 +70,9 @@ public class MergePDF {
 
     private FileChooser fileChooser;
     private File filePath1, filePath2;
-    private List<File> listFiles;
-    private List<InputStream> inputStreamsList;
-    private List<PDDocument> listPDDocuments;
+    private List<File> listFiles=new ArrayList<>();
+    private List<InputStream> inputStreamsList=new ArrayList<>();
+    private List<PDDocument> listPDDocuments=new ArrayList<>();
     String fileDestinationPath;
     boolean select1 = false, select2 = false,select0=false;
 
@@ -222,6 +226,19 @@ public class MergePDF {
 
 
             PDFMergerUtility PDFmerger = new PDFMergerUtility();
+
+            String FileOne = listFiles.get(0).getName();
+            String FileTwo = listFiles.get(1).getName();
+            int indexOne = FileOne.indexOf(".");
+            int indexTwo = FileTwo.indexOf(".");
+
+
+            fileDestinationPath = listFiles.get(0).getParent() + "\\" + FileOne.substring(0, indexOne) + FileTwo.substring(0, indexTwo) + ".pdf";
+            // System.out.println(fileDestinationPath);
+            multiLocationText.setText(fileDestinationPath);
+
+
+
             PDFmerger.setDestinationFileName(fileDestinationPath);
             PDFmerger.addSources(inputStreamsList);
 
@@ -230,8 +247,8 @@ public class MergePDF {
 
             for(PDDocument doc: listPDDocuments)
             {  doc.close();}
-            fileOne.clear();
-            fileTwo.clear();
+//            fileOne.clear();
+//            fileTwo.clear();
             locationText.clear();
 
 
@@ -258,11 +275,11 @@ public class MergePDF {
 
         this.listFiles = fileChooser.showOpenMultipleDialog(stage);
 
-        System.out.println(listFiles.isEmpty());
 
         if(listFiles.size()>=2)
             select0=true;
-        files.setText(listFiles.get(0).toString());
+        files.setText((listFiles.size()-1)+" more files"+" + "+listFiles.get(0).getAbsolutePath() );
+        System.out.println(listFiles.isEmpty());
 
 
 
