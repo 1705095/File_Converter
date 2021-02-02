@@ -17,17 +17,24 @@ import org.apache.pdfbox.pdmodel.PDDocument;
 
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 public class MergePDF {
-
+    @FXML
+    private TextField files;
     @FXML
     private TextField fileOne;
 
     @FXML
     private TextField fileTwo;
+
+    @FXML
+    private Button buttonZero;
 
     @FXML
     private Button buttonOne;
@@ -45,18 +52,29 @@ public class MergePDF {
     private TextField locationText;
 
     @FXML
+    private TextField multiLocationText;
+
+    @FXML
     private Label loc;
 
     @FXML
+    private Label multiLoc;
+    @FXML
     private Button mergeButton;
+
+    @FXML
+    private Button multiMergeButton;
 
     @FXML
     private Button backButton;
 
     private FileChooser fileChooser;
     private File filePath1, filePath2;
+    private List<File> listFiles=new ArrayList<>();
+    private List<InputStream> inputStreamsList=new ArrayList<>();
+    private List<PDDocument> listPDDocuments=new ArrayList<>();
     String fileDestinationPath;
-    boolean select1 = false, select2 = false;
+    boolean select1 = false, select2 = false,select0=false;
 
     @FXML
     void Back(ActionEvent event) throws IOException {
@@ -99,6 +117,8 @@ public class MergePDF {
 
 
     }
+
+
 
     @FXML
     void SelectFileOne(ActionEvent event) {
@@ -182,5 +202,91 @@ public class MergePDF {
 
 
     }
+
+    /*for multiple*/
+    @FXML
+    void MultiMergeButton(ActionEvent event) throws IOException {
+
+        if (!select0){
+            showMessage.setText("Select both files");
+        }
+        else{
+
+            for(File file: listFiles){
+
+                File filePath = new File(file.getAbsolutePath());
+                FileInputStream stream= new FileInputStream(filePath);
+                this.inputStreamsList.add(stream);
+                this.listPDDocuments.add( PDDocument.load(filePath));
+            }
+//            File file2 = new File(filePath2.getAbsolutePath());
+//            PDDocument doc2 = PDDocument.load(file2);
+//            PDFmerger.addSource(file2);
+//            doc2.close();
+
+
+            PDFMergerUtility PDFmerger = new PDFMergerUtility();
+
+            String FileOne = listFiles.get(0).getName();
+            String FileTwo = listFiles.get(1).getName();
+            int indexOne = FileOne.indexOf(".");
+            int indexTwo = FileTwo.indexOf(".");
+
+
+            fileDestinationPath = listFiles.get(0).getParent() + "\\" + FileOne.substring(0, indexOne) + FileTwo.substring(0, indexTwo) + ".pdf";
+            // System.out.println(fileDestinationPath);
+            multiLocationText.setText(fileDestinationPath);
+
+
+
+            PDFmerger.setDestinationFileName(fileDestinationPath);
+            PDFmerger.addSources(inputStreamsList);
+
+            PDFmerger.mergeDocuments();
+            showMessage.setText("DONE");
+
+            for(PDDocument doc: listPDDocuments)
+            {  doc.close();}
+//            fileOne.clear();
+//            fileTwo.clear();
+            locationText.clear();
+
+
+        }
+
+
+    }
+    @FXML
+    void SelectMultiple(ActionEvent event){
+        showMessage.setText("");
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+        fileChooser = new FileChooser();
+        fileChooser.setTitle("Select DOCX Files");
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("PDF Files", "*.pdf"));
+
+        String userDirectoryString = System.getProperty("user.home");
+        File userDirectory = new File(userDirectoryString);
+
+        if (!userDirectory.canRead())
+            userDirectory = new File("c:/");
+
+        fileChooser.setInitialDirectory(userDirectory);
+
+        this.listFiles = fileChooser.showOpenMultipleDialog(stage);
+
+
+        if(listFiles.size()>=2)
+            select0=true;
+        files.setText((listFiles.size()-1)+" more files"+" + "+listFiles.get(0).getAbsolutePath() );
+        System.out.println(listFiles.isEmpty());
+
+
+
+
+
+    }
+
+    /*for multiple*/
 
 }
