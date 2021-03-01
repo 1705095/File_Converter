@@ -1,4 +1,4 @@
-package sample;
+package sample.home;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -49,7 +49,7 @@ public class HomePage {
 
     @FXML
     void DOCtoPDF(ActionEvent event) throws IOException {
-        Parent Tpage= FXMLLoader.load(getClass().getResource("DocxToPDF.fxml"));
+        Parent Tpage= FXMLLoader.load(getClass().getResource("../docxTopdf/DocxToPDF.fxml"));
         Scene Tscne=new Scene(Tpage);
         Stage window=(Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(Tscne);
@@ -59,7 +59,7 @@ public class HomePage {
 
     @FXML
     void MergeDocx(ActionEvent event) throws IOException {
-        Parent Tpage= FXMLLoader.load(getClass().getResource("MergeDocx.fxml"));
+        Parent Tpage= FXMLLoader.load(getClass().getResource("../mergedocx/MergeDocx.fxml"));
         Scene Tscne=new Scene(Tpage);
         Stage window=(Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(Tscne);
@@ -69,7 +69,7 @@ public class HomePage {
 
     @FXML
     void MergePdf(ActionEvent event) throws IOException {
-        Parent Tpage= FXMLLoader.load(getClass().getResource("MergePDF.fxml"));
+        Parent Tpage= FXMLLoader.load(getClass().getResource("../mergepdf/MergePDF.fxml"));
         Scene Tscne=new Scene(Tpage);
         Stage window=(Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(Tscne);
@@ -79,7 +79,7 @@ public class HomePage {
 
     @FXML
     void PDFtoDOC(ActionEvent event) throws IOException {
-        Parent Tpage= FXMLLoader.load(getClass().getResource("PDFtoDOCx.fxml"));
+        Parent Tpage= FXMLLoader.load(getClass().getResource("../pdftodocx/PDFtoDOCx.fxml"));
         Scene Tscne=new Scene(Tpage);
         Stage window=(Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(Tscne);
@@ -89,7 +89,7 @@ public class HomePage {
 
     @FXML
     void ImageResizeButton(ActionEvent event) throws IOException {
-        Parent Tpage= FXMLLoader.load(getClass().getResource("Image_Resize.fxml"));
+        Parent Tpage= FXMLLoader.load(getClass().getResource("../imageResize/Image_Resize.fxml"));
         Scene Tscne=new Scene(Tpage);
         Stage window=(Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(Tscne);
@@ -99,7 +99,7 @@ public class HomePage {
 
     @FXML
     void TExtToPdf(ActionEvent event) throws IOException {
-        Parent Tpage= FXMLLoader.load(getClass().getResource("TexttoPdf.fxml"));
+        Parent Tpage= FXMLLoader.load(getClass().getResource("../textTopdf/TexttoPdf.fxml"));
         Scene Tscne=new Scene(Tpage);
         Stage window=(Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(Tscne);
@@ -109,7 +109,7 @@ public class HomePage {
 
     @FXML
     void PDFtoImage(ActionEvent event) throws IOException {
-        Parent Tpage= FXMLLoader.load(getClass().getResource("PdftoImage.fxml"));
+        Parent Tpage= FXMLLoader.load(getClass().getResource("../pdfToimage/PdftoImage.fxml"));
         Scene Tscne=new Scene(Tpage);
         Stage window=(Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(Tscne);
@@ -119,7 +119,7 @@ public class HomePage {
 
     @FXML
     void ImageToPDF(ActionEvent event) throws IOException {
-        Parent Tpage= FXMLLoader.load(getClass().getResource("ImagetoPdf.fxml"));
+        Parent Tpage= FXMLLoader.load(getClass().getResource("../imageTopdf/ImagetoPdf.fxml"));
         Scene Tscne=new Scene(Tpage);
         Stage window=(Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(Tscne);
@@ -129,7 +129,7 @@ public class HomePage {
 
     @FXML
     void PDFtoHTML(ActionEvent event) throws IOException {
-        Parent Tpage= FXMLLoader.load(getClass().getResource("PDFtoHTML.fxml"));
+        Parent Tpage= FXMLLoader.load(getClass().getResource("../pdftohtml/PDFtoHTML.fxml"));
         Scene Tscne=new Scene(Tpage);
         Stage window=(Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(Tscne);
@@ -139,7 +139,7 @@ public class HomePage {
 
     @FXML
     void HTMLtoPDF(ActionEvent event) throws IOException {
-        Parent Tpage= FXMLLoader.load(getClass().getResource("HTMLtoPDF.fxml"));
+        Parent Tpage= FXMLLoader.load(getClass().getResource("../htmlTopdf/HTMLtoPDF.fxml"));
         Scene Tscne=new Scene(Tpage);
         Stage window=(Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(Tscne);

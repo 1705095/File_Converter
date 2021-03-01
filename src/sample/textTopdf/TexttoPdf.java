@@ -1,4 +1,4 @@
-package sample;
+package sample.textTopdf;
 
 import com.itextpdf.text.Document;
 import com.itextpdf.text.Element;
@@ -170,7 +170,7 @@ public class TexttoPdf {
 
     @FXML
     void BackHome(ActionEvent event) throws IOException {
-        Parent Tpage= FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+        Parent Tpage= FXMLLoader.load(getClass().getResource("../home/HomePage.fxml"));
         Scene Tscne=new Scene(Tpage);
         Stage window=(Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(Tscne);

@@ -1,4 +1,4 @@
-package sample;
+package sample.docxTopdf;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,48 +11,39 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import org.apache.pdfbox.pdmodel.PDDocument;
-import org.fit.pdfdom.PDFDomTree;
+import org.apache.poi.xwpf.converter.pdf.PdfConverter;
+import org.apache.poi.xwpf.converter.pdf.PdfOptions;
+import org.apache.poi.xwpf.usermodel.XWPFDocument;
 
-import javax.xml.parsers.ParserConfigurationException;
-import java.io.File;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.Writer;
+import java.io.*;
 
-public class PDFtoHTML {
+public class DocxToPDF {
 
     @FXML
-    private Button backhome;
+    private Button backButton;
 
     @FXML
-    private Label convertName;
-
-    @FXML
-    private Button fileselectButton;
+    private Button selectFileButton;
 
     @FXML
     private TextField fileName;
 
     @FXML
-    private Label savedName;
-
-    @FXML
     private TextField locationText;
 
     @FXML
-    private Button convertfileButton;
+    private Button convertFileButton;
 
     @FXML
-    private Label showMessage;
+    private Label ShowMessage;
 
     private FileChooser fileChooser;
     private File filePath;
     String fileDestinationPath;
 
     @FXML
-    void BackHome(ActionEvent event) throws IOException {
-        Parent Tpage= FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+    void BackToHome(ActionEvent event) throws IOException {
+        Parent Tpage= FXMLLoader.load(getClass().getResource("../home/HomePage.fxml"));
         Scene Tscne=new Scene(Tpage);
         Stage window=(Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(Tscne);
@@ -60,13 +51,14 @@ public class PDFtoHTML {
 
     }
 
+
     @FXML
     void SelectFile(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
         fileChooser = new FileChooser();
         fileChooser.setTitle("Select TXT Files");
-        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("PDF Files", "*.pdf"));
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Docx Files", "*.docx"));
 
         String userDirectoryString = System.getProperty("user.home");
         File userDirectory = new File(userDirectoryString);
@@ -85,23 +77,24 @@ public class PDFtoHTML {
         //creating output file path
         String fileFullPath = filePath.getName();
         int index = fileFullPath.indexOf(".");
-        fileDestinationPath = filePath.getParent()+"\\"+fileFullPath.substring(0,index)+"PDftoHTML.html";
+        fileDestinationPath = filePath.getParent()+"\\"+fileFullPath.substring(0,index)+"DocxToPDf.pdf";
         //System.out.println(fileDestinationPath);
         locationText.setText(fileDestinationPath);
-        showMessage.setText("Click Convert");
+        ShowMessage.setText("Click Convert");
 
     }
 
+
     @FXML
-    void ConvertButton(ActionEvent event) throws IOException, ParserConfigurationException {
-        PDDocument pdf = PDDocument.load(new File(filePath.getAbsolutePath()));
-        Writer out = new PrintWriter(fileDestinationPath,"utf-8");
-        new PDFDomTree().writeText(pdf,out);
-        out.close();
-        showMessage.setText("HTML created");
+    void ConvertButton(ActionEvent event) throws IOException {
+        InputStream docx = new FileInputStream(new File(filePath.getAbsolutePath()));
+        XWPFDocument document = new XWPFDocument(docx);
+        PdfOptions options = PdfOptions.create();
+        OutputStream out = new FileOutputStream(new File(fileDestinationPath));
+        PdfConverter.getInstance().convert(document,out,options);
+        ShowMessage.setText("PDF created");
         fileName.clear();
         locationText.clear();
     }
-
 
 }

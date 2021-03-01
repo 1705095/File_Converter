@@ -1,5 +1,4 @@
-package sample;
-import com.itextpdf.text.pdf.codec.Base64;
+package sample.mergepdf;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,7 +10,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import com.itextpdf.text.Document;
 import org.apache.pdfbox.multipdf.PDFMergerUtility;
 import org.apache.pdfbox.pdmodel.PDDocument;
 
@@ -21,7 +19,6 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class MergePDF {
@@ -78,7 +75,7 @@ public class MergePDF {
 
     @FXML
     void Back(ActionEvent event) throws IOException {
-        Parent Tpage= FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+        Parent Tpage= FXMLLoader.load(getClass().getResource("../home/HomePage.fxml"));
         Scene Tscne=new Scene(Tpage);
         Stage window=(Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(Tscne);

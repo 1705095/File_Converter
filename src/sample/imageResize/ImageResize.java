@@ -1,4 +1,4 @@
-package sample;
+package sample.imageResize;
 
 
 import javafx.embed.swing.SwingFXUtils;
@@ -23,9 +23,6 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.ResourceBundle;
 
 public  class ImageResize{
 
@@ -166,7 +163,7 @@ public  class ImageResize{
 
     @FXML
     void BackHome(ActionEvent event) throws IOException {
-        Parent Tpage= FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+        Parent Tpage= FXMLLoader.load(getClass().getResource("../home/HomePage.fxml"));
         Scene Tscne=new Scene(Tpage);
         Stage window=(Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(Tscne);

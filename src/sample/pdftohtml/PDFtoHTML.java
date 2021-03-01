@@ -1,11 +1,5 @@
-package sample;
+package sample.pdftohtml;
 
-import com.itextpdf.html2pdf.ConverterProperties;
-import com.itextpdf.html2pdf.HtmlConverter;
-import com.itextpdf.text.Document;
-import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.pdf.PdfWriter;
-import com.itextpdf.tool.xml.XMLWorkerHelper;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,10 +11,16 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.fit.pdfdom.PDFDomTree;
 
-import java.io.*;
+import javax.xml.parsers.ParserConfigurationException;
+import java.io.File;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.Writer;
 
-public class HTMLtoPDF {
+public class PDFtoHTML {
 
     @FXML
     private Button backhome;
@@ -51,12 +51,22 @@ public class HTMLtoPDF {
     String fileDestinationPath;
 
     @FXML
+    void BackHome(ActionEvent event) throws IOException {
+        Parent Tpage= FXMLLoader.load(getClass().getResource("../home/HomePage.fxml"));
+        Scene Tscne=new Scene(Tpage);
+        Stage window=(Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(Tscne);
+        window.show();
+
+    }
+
+    @FXML
     void SelectFile(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
         fileChooser = new FileChooser();
         fileChooser.setTitle("Select TXT Files");
-        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("HTML Files", "*.html"));
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("PDF Files", "*.pdf"));
 
         String userDirectoryString = System.getProperty("user.home");
         File userDirectory = new File(userDirectoryString);
@@ -75,7 +85,7 @@ public class HTMLtoPDF {
         //creating output file path
         String fileFullPath = filePath.getName();
         int index = fileFullPath.indexOf(".");
-        fileDestinationPath = filePath.getParent()+"\\"+fileFullPath.substring(0,index)+"HTMLtoPDF.pdf";
+        fileDestinationPath = filePath.getParent()+"\\"+fileFullPath.substring(0,index)+"PDftoHTML.html";
         //System.out.println(fileDestinationPath);
         locationText.setText(fileDestinationPath);
         showMessage.setText("Click Convert");
@@ -83,39 +93,15 @@ public class HTMLtoPDF {
     }
 
     @FXML
-    void ConvertButton(ActionEvent event) throws IOException, DocumentException {
-       /* Document document = new Document();
-        PdfWriter writer = PdfWriter.getInstance(document,new FileOutputStream(filePath.getAbsoluteFile()));
-        document.open();
-        XMLWorkerHelper.getInstance().parseXHtml(writer, document, new FileInputStream(fileDestinationPath));
-        document.close();*/
-
-       /* File html = new File(filePath.getAbsolutePath());
-        File pdf = new File(fileDestinationPath);
-        ConverterProperties converterProperties = new ConverterProperties();
-        HtmlConverter.convertToPdf(new FileInputStream(html), new FileOutputStream(pdf), converterProperties);
+    void ConvertButton(ActionEvent event) throws IOException, ParserConfigurationException {
+        PDDocument pdf = PDDocument.load(new File(filePath.getAbsolutePath()));
+        Writer out = new PrintWriter(fileDestinationPath,"utf-8");
+        new PDFDomTree().writeText(pdf,out);
+        out.close();
+        showMessage.setText("HTML created");
         fileName.clear();
         locationText.clear();
-        showMessage.setText("File Converted");*/
-
-       HtmlConverter.convertToPdf(new File(filePath.getAbsolutePath()),new File(fileDestinationPath));
-       locationText.clear();
-       fileName.clear();
-       showMessage.setText("Converted");
-
     }
-
-
-    @FXML
-    void BackHome(ActionEvent event) throws IOException {
-        Parent Tpage= FXMLLoader.load(getClass().getResource("HomePage.fxml"));
-        Scene Tscne=new Scene(Tpage);
-        Stage window=(Stage)((Node)event.getSource()).getScene().getWindow();
-        window.setScene(Tscne);
-        window.show();
-
-    }
-
 
 
 }

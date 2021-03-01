@@ -1,9 +1,7 @@
-package sample;
+package sample.htmlTopdf;
 
-import com.itextpdf.text.pdf.PdfReader;
-import com.itextpdf.text.pdf.parser.PdfReaderContentParser;
-import com.itextpdf.text.pdf.parser.SimpleTextExtractionStrategy;
-import com.itextpdf.text.pdf.parser.TextExtractionStrategy;
+import com.itextpdf.html2pdf.HtmlConverter;
+import com.itextpdf.text.DocumentException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,17 +13,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import org.apache.pdfbox.pdmodel.PDDocument;
-import org.apache.poi.xwpf.usermodel.BreakType;
-import org.apache.poi.xwpf.usermodel.XWPFDocument;
-import org.apache.poi.xwpf.usermodel.XWPFParagraph;
-import org.apache.poi.xwpf.usermodel.XWPFRun;
-import org.fit.pdfdom.PDFDomTree;
 
-import javax.xml.parsers.ParserConfigurationException;
 import java.io.*;
 
-public class PDFtoDOCX {
+public class HTMLtoPDF {
 
     @FXML
     private Button backhome;
@@ -61,7 +52,7 @@ public class PDFtoDOCX {
 
         fileChooser = new FileChooser();
         fileChooser.setTitle("Select TXT Files");
-        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("PDF Files", "*.pdf"));
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("HTML Files", "*.html"));
 
         String userDirectoryString = System.getProperty("user.home");
         File userDirectory = new File(userDirectoryString);
@@ -80,7 +71,7 @@ public class PDFtoDOCX {
         //creating output file path
         String fileFullPath = filePath.getName();
         int index = fileFullPath.indexOf(".");
-        fileDestinationPath = filePath.getParent()+"\\"+fileFullPath.substring(0,index)+"PDFtoDocx.docx";
+        fileDestinationPath = filePath.getParent()+"\\"+fileFullPath.substring(0,index)+"HTMLtoPDF.pdf";
         //System.out.println(fileDestinationPath);
         locationText.setText(fileDestinationPath);
         showMessage.setText("Click Convert");
@@ -88,31 +79,32 @@ public class PDFtoDOCX {
     }
 
     @FXML
-    void ConvertButton(ActionEvent event) throws IOException, ParserConfigurationException {
-        XWPFDocument document = new XWPFDocument();
-        String pdf = filePath.getAbsolutePath();
-        PdfReader reader = new PdfReader(pdf);
-        PdfReaderContentParser parser = new PdfReaderContentParser(reader);
+    void ConvertButton(ActionEvent event) throws IOException, DocumentException {
+       /* Document document = new Document();
+        PdfWriter writer = PdfWriter.getInstance(document,new FileOutputStream(filePath.getAbsoluteFile()));
+        document.open();
+        XMLWorkerHelper.getInstance().parseXHtml(writer, document, new FileInputStream(fileDestinationPath));
+        document.close();*/
 
-        for (int i=1;i<=reader.getNumberOfPages();i++){
-            TextExtractionStrategy strategy = parser.processContent(i, new SimpleTextExtractionStrategy());
-            String text = strategy.getResultantText();
-            XWPFParagraph p =document.createParagraph();
-            XWPFRun run = p.createRun();
-            run.setText(text);
-            run.addBreak(BreakType.PAGE);
-        }
-        FileOutputStream out = new FileOutputStream(fileDestinationPath);
-        document.write(out);
-        reader.close();
-        showMessage.setText("Docx created");
+       /* File html = new File(filePath.getAbsolutePath());
+        File pdf = new File(fileDestinationPath);
+        ConverterProperties converterProperties = new ConverterProperties();
+        HtmlConverter.convertToPdf(new FileInputStream(html), new FileOutputStream(pdf), converterProperties);
         fileName.clear();
         locationText.clear();
+        showMessage.setText("File Converted");*/
+
+       HtmlConverter.convertToPdf(new File(filePath.getAbsolutePath()),new File(fileDestinationPath));
+       locationText.clear();
+       fileName.clear();
+       showMessage.setText("Converted");
+
     }
+
 
     @FXML
     void BackHome(ActionEvent event) throws IOException {
-        Parent Tpage= FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+        Parent Tpage= FXMLLoader.load(getClass().getResource("../home/HomePage.fxml"));
         Scene Tscne=new Scene(Tpage);
         Stage window=(Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(Tscne);
